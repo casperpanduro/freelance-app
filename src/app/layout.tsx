@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${kanit.className} antialiased
+        className={`${kanit.className} bg-black text-white antialiased
       `}
       >
         {children}

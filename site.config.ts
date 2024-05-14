@@ -1,8 +1,10 @@
+export type PlanPaymentOption = "yearly" | "monthly";
+
 interface Plan {
   id: string;
   title: string;
   description?: string;
-  type: "yearly" | "monthly";
+  type: PlanPaymentOption;
   price: number;
 }
 
@@ -47,20 +49,6 @@ const siteConfig: SiteConfig = {
       description: "For freelancers and small teams",
       type: "yearly",
       price: 889,
-    },
-    {
-      id: "price_1P9Ct8KzUpKZ2LMF4DgVBGdb",
-      title: "Enterprise",
-      description: "For teams and organizations",
-      type: "monthly",
-      price: 129,
-    },
-    {
-      id: "price_1P9CtjKzUpKZ2LMF02PMCszD",
-      title: "Enterprise",
-      description: "For freelancers and small teams",
-      type: "yearly",
-      price: 1299,
     },
   ],
 };
