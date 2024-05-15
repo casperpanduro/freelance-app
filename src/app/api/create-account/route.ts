@@ -1,38 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
-import ApiClient from "@/lib/ApiClient";
-import { AxiosResponse } from "axios";
+import Server from "@/lib/Server";
 
 export async function POST(req: NextRequest, res: NextResponse) {
-  const {
-    accountName,
-    name,
-    email,
-    password,
-    password_confirmation,
-    selectedPlan,
-  } = await req.json();
+  const formData = await req.json();
 
-  console.log("accountName", accountName);
-  console.log("name", name);
-  console.log("email", email);
+  const Api = Server();
 
-  return await ApiClient()
-    .post("/register-account", {
-      team_name: accountName,
-      name,
-      email,
-      password,
-      password_confirmation,
-      plan_id: selectedPlan,
-    })
-    .then((response: any) => {
-      console.log("response", response);
-      return new NextResponse(JSON.stringify(response.data), {
+  // csrf
+  await Api.csrf();
+
+  return await Api.createAccount(formData)
+    .then((res) => {
+      return new NextResponse(JSON.stringify(res.data), {
         headers: { "content-type": "application/json" },
       });
     })
     .catch((error) => {
-      console.log("error", error.response);
       return new NextResponse(
         JSON.stringify({
           error: error.response.data.message,

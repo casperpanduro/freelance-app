@@ -1,9 +1,7 @@
 import Logo from "@/components/ui/Logo";
-import TextInput from "@/components/ui/TextInput";
-import siteConfig from "../../../site.config";
-import useMoneyFormat from "@/hooks/useMoneyFormat";
 import Header from "@/components/partials/Header";
-import CreateAccountForm from "@/components/CreateAccountForm";
+import React from "react";
+import CreateAccountForm from "@/components/forms/CreateAccountForm";
 
 const CreateAccount = () => {
   return (

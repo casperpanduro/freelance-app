@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Cabin, Inter, Kanit, Titillium_Web } from "next/font/google";
 import "./globals.css";
-import siteConfig from "../../site.config";
+import siteConfig from "@/site.config";
+import StoreProvider from "@/providers/StoreProvider";
 
 //const inter = Inter({ subsets: ["latin"] });
 const kanit = Cabin({
@@ -25,7 +26,7 @@ export default function RootLayout({
         className={`${kanit.className} bg-black text-white antialiased
       `}
       >
-        {children}
+        <StoreProvider>{children}</StoreProvider>
       </body>
     </html>
   );

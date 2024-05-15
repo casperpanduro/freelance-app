@@ -1,10 +1,12 @@
 "use client";
 import TextInput from "@/components/ui/TextInput";
-import siteConfig, { PlanPaymentOption } from "../../site.config";
+import siteConfig, { PlanPaymentOption } from "@/site.config";
 import useMoneyFormat from "@/hooks/useMoneyFormat";
 import { FormEvent, useEffect, useState } from "react";
+import Button from "@/components/ui/Button";
+import ApiClient from "@/lib/ApiClient";
 
-interface CreateAccountFormState {
+export interface CreateAccountFormState {
   accountName: string;
   name: string;
   email: string;
@@ -36,14 +38,15 @@ const CreateAccountForm = () => {
     }));
   }, [activeTab]);
 
-  const handleSubmission = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmission = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    fetch("/api/create-account", {
-      method: "POST",
-      body: JSON.stringify(form),
-    })
-      .then((response) => response.json())
+    await ApiClient()
+      .get("/api/create-account", {
+        method: "POST",
+        body: JSON.stringify(form),
+      })
+      .then((response) => response.data)
       .then((data) => {
         if (data.redirect) {
           window.location.href = data.redirect;
@@ -234,14 +237,7 @@ const CreateAccountForm = () => {
             );
           })}
       </div>
-      <button
-        type={"submit"}
-        className={
-          "px-8 py-4 bg-pink-600 text-white font-medium text-xl w-full mt-12"
-        }
-      >
-        Proceed to checkout
-      </button>
+      <Button text={"Proceed to checkout"} />
     </form>
   );
 };
