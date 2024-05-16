@@ -1,10 +1,10 @@
-import { Client } from "@/features/clients/types";
+import { Client, ClientPayload } from "@/features/clients/types";
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import api from "@/lib/api";
 import { FetchStatus } from "@/types";
 
 interface ClientState {
-  items: Client[];
+  items: ClientPayload | null;
   showCreate: boolean;
   page: number;
   status: FetchStatus;
@@ -12,7 +12,7 @@ interface ClientState {
 }
 
 const initialState: ClientState = {
-  items: [],
+  items: null,
   showCreate: false,
   page: 1,
   status: "idle",
@@ -22,7 +22,7 @@ const initialState: ClientState = {
 export const fetchClients = createAsyncThunk(
   "clients/fetchClients",
   async () => {
-    return await api.get("/api/clients");
+    return await api.get("/api/clients").then((res) => res.data);
   },
 );
 
@@ -43,7 +43,7 @@ const clientSlice = createSlice({
       // @ts-ignore
       .addCase(
         fetchClients.fulfilled,
-        (state, action: PayloadAction<Client[]>) => {
+        (state, action: PayloadAction<ClientPayload>) => {
           state.status = "succeeded";
           state.items = action.payload;
         },

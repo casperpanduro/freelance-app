@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 interface TextInputProps {
   type: "email" | "password" | "text";
   placeholder?: string;
@@ -22,9 +24,12 @@ const TextInput = ({
   name,
 }: TextInputProps) => {
   return (
-    <div className={"relative"}>
+    <div className={"relative w-full"}>
       {label && (
-        <label className={"text-xl mb-2 block text-white"} htmlFor={id}>
+        <label
+          className={"text-sm font-semibold mb-2 block text-zinc-800"}
+          htmlFor={id}
+        >
           {label}
         </label>
       )}
@@ -36,7 +41,7 @@ const TextInput = ({
         onChange={onChange}
         autoComplete={autoComplete}
         autoCorrect={autoCorrect}
-        className="w-full text-xl p-4 rounded-md border-zinc-800 border bg-zinc-800 focus:border-pink-600 focus:ring-0 transition-colors focus:outline-0 duration-200 ease-in-out"
+        className="w-full text-sm px-3 py-1.5 h-9 rounded-md border-gray-300 border focus:border-zinc-600 focus:ring-0 transition-colors focus:outline-0 duration-200 ease-in-out"
         type={type}
         name={name}
       />

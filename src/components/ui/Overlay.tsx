@@ -45,7 +45,7 @@ const SlideModal = ({ children, title, active, onClose = () => {} }: Props) => {
             </div>
             <div className={"grow p-6"}>{children}</div>
             <div className={"p-6 border-t border-gray-100 flex justify-end"}>
-              <AdminButton text={"Create Client"} />
+              <AdminButton type={"submit"} text={"Create Client"} />
             </div>
           </motion.div>
         </motion.div>

@@ -1,6 +1,8 @@
+"use client";
 import AdminButton from "@/components/ui/AdminButton";
 import { useAppDispatch } from "@/lib/hooks";
 import { toggleCreateClientModal } from "@/features/clients/clientSlice";
+import { PlusIcon } from "@heroicons/react/20/solid";
 
 interface Props {
   text?: string;
@@ -12,7 +14,7 @@ const ToggleCreateClientModal = ({ text = "Create client" }: Props) => {
     dispatch(toggleCreateClientModal());
   };
 
-  return <AdminButton text={text} onClick={handleClick} />;
+  return <AdminButton icon={PlusIcon} text={text} onClick={handleClick} />;
 };
 
 export default ToggleCreateClientModal;

@@ -3,6 +3,7 @@ import SlideModal from "@/components/ui/Overlay";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { toggleCreateClientModal } from "@/features/clients/clientSlice";
+import CreateClientForm from "@/features/clients/component/CreateClientForm";
 
 const CreateClient = () => {
   const active = useAppSelector((state) => state.clients.showCreate);
@@ -14,7 +15,9 @@ const CreateClient = () => {
       onClose={() => dispatch(toggleCreateClientModal())}
       title={"Create new client"}
     >
-      <div>sldkf</div>
+      <div>
+        <CreateClientForm />
+      </div>
     </SlideModal>
   );
 };

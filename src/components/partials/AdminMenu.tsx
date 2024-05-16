@@ -20,7 +20,7 @@ const AdminMenu = ({ items }: Props) => {
           <li key={index}>
             <Link
               href={item.href}
-              className={`flex items-center gap-x-3 py-2 px-3 text-white hover:bg-zinc-800 rounded ${isActive(item.href) ? "opacity-1 bg-zinc-800" : "opacity-75"}`}
+              className={`flex items-center gap-x-3 py-2 px-3 text-white hover:bg-zinc-800 rounded ${isActive(item.href) ? "opacity-1 bg-teal-800" : "opacity-75"}`}
             >
               {item.icon}
               {item.title}
