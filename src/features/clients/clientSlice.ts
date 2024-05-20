@@ -5,6 +5,7 @@ import { FetchStatus } from "@/types";
 
 interface ClientState {
   items: ClientPayload | null;
+  selectedClient: Client | null;
   showCreate: boolean;
   page: number;
   status: FetchStatus;
@@ -13,6 +14,7 @@ interface ClientState {
 
 const initialState: ClientState = {
   items: null,
+  selectedClient: null,
   showCreate: false,
   page: 1,
   status: "idle",
@@ -32,6 +34,9 @@ const clientSlice = createSlice({
   reducers: {
     toggleCreateClientModal(state) {
       state.showCreate = !state.showCreate;
+    },
+    setSelectedClient(state, action: PayloadAction<Client>) {
+      state.selectedClient = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -55,6 +60,7 @@ const clientSlice = createSlice({
   },
 });
 
-export const { toggleCreateClientModal } = clientSlice.actions;
+export const { toggleCreateClientModal, setSelectedClient } =
+  clientSlice.actions;
 
 export default clientSlice.reducer;

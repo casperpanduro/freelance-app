@@ -1,12 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "@/features/user/userSlice";
 import clientReducer from "@/features/clients/clientSlice";
+import configReducer from "@/store/configSlice";
 
 export const makeStore = () => {
   return configureStore({
     reducer: {
       user: userReducer,
       clients: clientReducer,
+      config: configReducer,
     },
   });
 };

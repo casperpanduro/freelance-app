@@ -1,10 +1,14 @@
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import useSWR, { mutate } from "swr";
-import { fetchClients } from "@/features/clients/clientSlice";
+import {
+  fetchClients,
+  setSelectedClient,
+} from "@/features/clients/clientSlice";
 import CreateClientForm, {
   CreateClientFormState,
 } from "@/features/clients/component/CreateClientForm";
 import api from "@/lib/api";
+import { Client } from "@/features/clients/types";
 
 const useClients = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +35,8 @@ const useClients = () => {
 
   return {
     clients: useAppSelector((state) => state.clients.items),
+    setSelectedClient: (client: Client) => dispatch(setSelectedClient(client)),
+    selectedClient: useAppSelector((state) => state.clients.selectedClient),
     create,
     loading,
   };

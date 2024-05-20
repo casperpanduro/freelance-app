@@ -4,9 +4,10 @@ import useClients from "@/features/clients/hooks/useClients";
 import ToggleCreateClientModal from "@/features/clients/component/ToggleCreateClientModal";
 import { Client } from "@/features/clients/types";
 import useClientAddress from "@/features/clients/hooks/useClientAddress";
+import Link from "next/link";
 
 const ClientsTable = () => {
-  const { clients, loading } = useClients();
+  const { clients, loading, setSelectedClient } = useClients();
   const { getAddress } = useClientAddress();
 
   return (
@@ -20,9 +21,13 @@ const ClientsTable = () => {
       headlines={["Name", "VAT", "Address"]}
       data={
         clients?.data.map((client: Client) => [
-          <span className={"font-semibold text-zinc-800"}>
+          <Link
+            onClick={() => setSelectedClient(client)}
+            href={`/admin/clients/${client.id}`}
+            className={"font-semibold text-zinc-800"}
+          >
             {client.company_name}
-          </span>,
+          </Link>,
           client.vat_number,
           getAddress(client),
         ]) ?? []

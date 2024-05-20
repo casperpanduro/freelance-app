@@ -2,6 +2,8 @@
 import { usePathname } from "next/navigation";
 import useAuth from "@/hooks/useAuth";
 import Skeleton from "@/components/ui/Skeleton";
+import useHeadline from "@/hooks/useHeadline";
+import Breadcrumbs from "@/components/ui/Breadcrumbs";
 
 interface Props {
   items: any[];
@@ -10,6 +12,8 @@ interface Props {
 const AdminTitle = ({ items }: Props) => {
   const pathname = usePathname();
   const { user, isLoading } = useAuth();
+
+  const { headline } = useHeadline();
 
   const title = items.find((item) => item.href === pathname)?.title;
 
@@ -20,7 +24,10 @@ const AdminTitle = ({ items }: Props) => {
 
   return (
     <div className={"mb-6 flex items-center justify-between gap-x-4"}>
-      <h1 className={"text-3xl font-bold"}>{title}</h1>
+      <div>
+        <Breadcrumbs />
+        <h1 className={"text-3xl font-bold"}>{headline ? headline : title}</h1>
+      </div>
       <div className={"flex items-center gap-x-2"}>
         <div
           className={
