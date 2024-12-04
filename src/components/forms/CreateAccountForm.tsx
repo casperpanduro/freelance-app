@@ -1,10 +1,10 @@
 "use client";
-import TextInput from "@/components/ui/TextInput";
+import TextInput from "@/components/TextInput";
 import siteConfig, { PlanPaymentOption } from "@/site.config";
 import useMoneyFormat from "@/hooks/useMoneyFormat";
 import { FormEvent, useEffect, useState } from "react";
-import Button from "@/components/ui/Button";
 import ApiClient from "@/lib/ApiClient";
+import { Button } from "@/components/ui/button";
 
 export interface CreateAccountFormState {
   accountName: string;
@@ -237,7 +237,7 @@ const CreateAccountForm = () => {
             );
           })}
       </div>
-      <Button text={"Proceed to checkout"} />
+      <Button >Proceed to checkout</Button>
     </form>
   );
 };

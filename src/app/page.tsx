@@ -1,5 +1,6 @@
 import Header from "@/components/partials/Header";
 import Image from "next/image";
+import { Heading3Xl, HeadingXl } from "@/components/typography/headings";
 
 export default function Home() {
   return (
@@ -7,12 +8,12 @@ export default function Home() {
       <Header />
       <main className={"mt-28"}>
         <div className={"max-w-4xl mx-auto pt-24 pb-12 text-center space-y-8"}>
-          <p className={"text-zinc-400 text-xl"}>Never miss an hour again.</p>
-          <h1 className={"font-bold text-7xl tracking-tight"}>
-            <span className={"text-pink-600"}>Track your time.</span>
+          <p className={"text-white text-xl"}>Never miss an hour again.</p>
+          <Heading3Xl>
+            <span className={"text-primary"}>Track your time.</span>
             <br />
             Made for freelancers, developers and software teams.
-          </h1>
+          </Heading3Xl>
         </div>
         <div className={"max-w-7xl mx-auto"}>
           <Image

@@ -1,5 +1,5 @@
 "use client";
-import AdminButton from "@/components/ui/AdminButton";
+import AdminButton from "@/components/AdminButton";
 import { useAppDispatch } from "@/lib/hooks";
 import { toggleCreateClientModal } from "@/features/clients/clientSlice";
 import { PlusIcon } from "@heroicons/react/20/solid";

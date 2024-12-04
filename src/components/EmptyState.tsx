@@ -1,5 +1,5 @@
 import { PlusIcon } from "@heroicons/react/20/solid";
-import AdminButton from "@/components/ui/AdminButton";
+import AdminButton from "@/components/AdminButton";
 import { ReactNode } from "react";
 
 export interface EmptyStateProps {

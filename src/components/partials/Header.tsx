@@ -1,5 +1,6 @@
-import Logo from "@/components/ui/Logo";
+import Logo from "@/components/Logo";
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button";
 
 const Header = () => {
   const menu = [
@@ -23,7 +24,7 @@ const Header = () => {
   return (
     <header
       className={
-        "bg-gradient-to-b z-40 from-black via-black/75 to-black/0 text-lg font-light fixed top-0 inset-x-0 h-28 flex items-center"
+        "bg-gradient-to-b z-40 from-background via-background/75 to-background/0 font-light fixed top-0 inset-x-0 h-28 flex items-center"
       }
     >
       <div
@@ -49,7 +50,9 @@ const Header = () => {
           <Link
             href={"/create-account"}
             className={
-              "bg-white px-8 font-medium py-4 text-black text-base border border-white text-md hover:bg-transparent hover:text-white transition-colors duration-200"
+              buttonVariants({
+                size: "lg",
+              })
             }
           >
             Create account

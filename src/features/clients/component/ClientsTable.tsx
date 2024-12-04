@@ -1,38 +1,38 @@
 "use client";
-import Table from "@/components/ui/Table";
 import useClients from "@/features/clients/hooks/useClients";
-import ToggleCreateClientModal from "@/features/clients/component/ToggleCreateClientModal";
-import { Client } from "@/features/clients/types";
 import useClientAddress from "@/features/clients/hooks/useClientAddress";
-import Link from "next/link";
+import { Table, TableBody, TableCaption, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ListLoading } from "@/components/loading-states";
 
 const ClientsTable = () => {
   const { clients, loading, setSelectedClient } = useClients();
   const { getAddress } = useClientAddress();
 
+  if(loading) return (<ListLoading count={12} />);
+
   return (
-    <Table
-      emptyState={{
-        title: "No clients yet",
-        description: "Add your first client to get started.",
-        createAction: <ToggleCreateClientModal />,
-      }}
-      loading={loading}
-      headlines={["Name", "VAT", "Address"]}
-      data={
-        clients?.data.map((client: Client) => [
-          <Link
-            onClick={() => setSelectedClient(client)}
-            href={`/admin/clients/${client.id}`}
-            className={"font-semibold text-zinc-800"}
-          >
-            {client.company_name}
-          </Link>,
-          client.vat_number,
-          getAddress(client),
-        ]) ?? []
-      }
-    />
+    <Table>
+      <TableHeader>
+        <TableRow>
+          <TableHead className="w-[100px]">Company</TableHead>
+          <TableHead>VAT</TableHead>
+          <TableHead>Address</TableHead>
+          <TableHead className="text-right">Amount</TableHead>
+        </TableRow>
+      </TableHeader>
+      <TableBody>
+        {clients?.data?.map((client) => (
+          <TableRow key={client.id}>
+            <TableCell className="font-medium">{client.company_name}</TableCell>
+            <TableCell>{client.vat_number}</TableCell>
+            <TableCell>{`${client.address}, ${client.zip} ${client.city}`}</TableCell>
+            <TableCell className="text-right">$250.00</TableCell>
+          </TableRow>
+          ))}
+      </TableBody>
+    </Table>
+
   );
 };
 

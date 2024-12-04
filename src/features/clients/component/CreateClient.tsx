@@ -1,5 +1,5 @@
 "use client";
-import SlideModal from "@/components/ui/Overlay";
+import SlideModal from "@/components/Overlay";
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks";
 import { toggleCreateClientModal } from "@/features/clients/clientSlice";

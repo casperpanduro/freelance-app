@@ -1,6 +1,6 @@
 import { useState } from "react";
-import TextInput from "@/components/ui/TextInput";
-import AdminButton from "@/components/ui/AdminButton";
+import TextInput from "@/components/TextInput";
+import AdminButton from "@/components/AdminButton";
 import useClients from "@/features/clients/hooks/useClients";
 import useSearchCVR from "@/features/clients/hooks/useSearchCVR";
 

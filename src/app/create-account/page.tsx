@@ -1,4 +1,4 @@
-import Logo from "@/components/ui/Logo";
+import Logo from "@/components/Logo";
 import Header from "@/components/partials/Header";
 import React from "react";
 import CreateAccountForm from "@/components/forms/CreateAccountForm";
